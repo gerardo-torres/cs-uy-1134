@@ -1,0 +1,49 @@
+1. During lecture you learned about the different methods of a doubly linked list. It is
+important to understand the runtime of each method. Provide the following w​orst-case
+runtime for those methods
+
+worst-time running case:
+a. def __len__(self):
+	O(1)
+b. def is_empty(self):
+	O(1)
+c. def first_node(self):
+	O(1)
+d. def last_node(self): 
+	O(1)
+e. def add_after(self, node, data):
+	O(1)
+f. def add_first(self, data):
+	O
+g. def add_last(self, data):
+h. def add_before(self, node, data):
+i. def delete_node(self, node):
+j. def delete_first(self):
+k. def delete_last(self):
+
+2. Trace the following function. What is the output of the following code? Describe what
+the function does.
+	def func(string_input):
+		L = DoublyLinkedList()
+		for chr in string_input:
+			L.add_last(chr)
+		cursor = L.first_node()
+		while cursor.data is not None:
+			if cursor.data.lower() in ['a','e','i','o','u']:
+				temp = cursor.next
+				L.delete_node(cursor)
+				cursor = temp
+			else:
+				cursor = cursor.next
+		new_str = "".join(L)
+		return new_str
+		string_input = "TheCatGoesMeowAndTheCowGoesMoo"
+		func(string_input)
+
+This function adds all the letters of a string into a linked list and deletes all the letters with a lowercase
+
+3. 
+
+3,2,5,8,12,6
+------------
+3,2,5,8,12,2,4,8,10,15,6,2,3,8,10
