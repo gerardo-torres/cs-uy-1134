@@ -6,7 +6,7 @@ Included:
 2. Lab
 3. Notes
 
-Topics (as of :
+Topics (as of 4.08.2018):
 1. Asymptotic analysis
 2. Recursion
 3. Dynamic Arrays
