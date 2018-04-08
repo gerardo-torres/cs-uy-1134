@@ -1,5 +1,5 @@
 # CS-UY 1134
-Repository for my Data Structures and Algorithm class.  
+Repository for my Data Structures and Algorithms class.  
 
 Included:
 1. Classwork

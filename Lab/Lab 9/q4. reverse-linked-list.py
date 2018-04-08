@@ -115,14 +115,7 @@ def reverse_list_change_elements_order(lnk_lst):
 
 def reverse_list_change_nodes_order(lnk_lst):
     """ Reverses the linked list"""
-    first_node = lnk_lst.header.next
-    cursor = first_node
-    lnk_lst.header.next = lnk_lst.trailer.prev
-    while cursor.data is not None:
-        cursor.next, cursor.prev = cursor.prev, cursor.next
-        cursor = cursor.next
-    first_node.next = cursor
-    cursor.prev = first_node
+    
     
 
 main()                                                      
