@@ -95,6 +95,10 @@ def main():
     print(dupS.top_dups_count())
     print(dupS.pop())
     print(dupS.pop())
+    print(dupS.top())
+    print(dupS.top_dups_count())
+    print(dupS.pop_dups())
+    print(dupS.top())
     print(dupS)
 
 main()
