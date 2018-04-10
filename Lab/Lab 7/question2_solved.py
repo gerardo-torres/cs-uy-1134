@@ -16,11 +16,11 @@ def eval_postfix_exp(expr):
             elif tok == "|":
                 res = lhs or rhs
             elif tok == "&":
-                res =lhs abd rhs
+                res = lhs and rhs
             else:
                 raise ValueError("unsupported")
         stack.push(res)
         final_res = stack.pop()
-        if not stac.is_empty():
+        if not stack.is_empty():
             raise ValueError("d")
         return final_res
