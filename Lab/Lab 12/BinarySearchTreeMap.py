@@ -27,7 +27,6 @@ class BinarySearchTreeMap:
             self.left = None
             self.right = None
 
-
     def __init__(self):
         self.root = None
         self.size = 0
@@ -37,7 +36,6 @@ class BinarySearchTreeMap:
 
     def is_empty(self):
         return len(self) == 0
-
 
     # raises exception if not found
     def __getitem__(self, key):
@@ -95,14 +93,14 @@ class BinarySearchTreeMap:
             self.size += 1
 
 
-    #raises exception if key not in tree
+    # raises exception if key not in tree
     def __delitem__(self, key):
         if (self.subtree_find(self.root, key) is None):
             raise KeyError(str(key) + " is not found")
         else:
             self.subtree_delete(self.root, key)
 
-    #assumes key is in tree + returns value assosiated
+    # assumes key is in tree + returns value associated
     def subtree_delete(self, node, key):
         node_to_delete = self.subtree_find(node, key)
         value = node_to_delete.item.value

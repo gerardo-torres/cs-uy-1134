@@ -1,3 +1,6 @@
+import csv
+import random
+
 class BinarySearchTreeMap:
 
     class Item:
@@ -27,7 +30,6 @@ class BinarySearchTreeMap:
             self.left = None
             self.right = None
 
-
     def __init__(self):
         self.root = None
         self.size = 0
@@ -37,7 +39,6 @@ class BinarySearchTreeMap:
 
     def is_empty(self):
         return len(self) == 0
-
 
     # raises exception if not found
     def __getitem__(self, key):
@@ -95,14 +96,14 @@ class BinarySearchTreeMap:
             self.size += 1
 
 
-    #raises exception if key not in tree
+    # raises exception if key not in tree
     def __delitem__(self, key):
         if (self.subtree_find(self.root, key) is None):
             raise KeyError(str(key) + " is not found")
         else:
             self.subtree_delete(self.root, key)
 
-    #assumes key is in tree + returns value assosiated
+    # assumes key is in tree + returns value associated
     def subtree_delete(self, node, key):
         node_to_delete = self.subtree_find(node, key)
         value = node_to_delete.item.value
@@ -186,4 +187,59 @@ class BinarySearchTreeMap:
         for node in self.inorder():
             yield (node.item.key, node.item.value)
 
+def create_csv(sizes_lst, heights_lst):
+    """ creating a csv file that contains the sizes and heights of the lists """
+    file = open('heights.csv','w')
+    if len(sizes_lst) != len(heights_lst):
+        raise Exception("lists given must be of equal sizes!")
+    for i in range(len(sizes_lst)):
+        file.write(str(sizes_lst[i]) + "," + str(heights_lst[i]) + '\n')
+    file.close()
 
+def create_rand_lst(n):
+    lst = []
+    for i in range(n):
+        my_int = random.randint(8, 32768)
+        lst.append(my_int)
+    return lst
+
+def sub_tree_height(bst, root):
+    """ returns the height of the binary search tree """
+    if (root.left is None) and (root.right is None):
+        return 0
+    else:
+        if (root.left is not None) and (root.right is None):
+            left = sub_tree_height(bst, root.left)
+            return 1 + left
+        elif (root.left is None) and (root.right is not None):
+            right = sub_tree_height(bst, root.left)
+            return 1 + right
+        else:  # both the left and the right contain data points
+            left = sub_tree_height(bst, root.left)
+            right = sub_tree_height(bst, root.right)
+            return 1 + max(left, right)
+
+def insert_into_tree(lst):
+    bst = BinarySearchTreeMap()
+    for i in range(len(lst)):
+        bst[i] = None
+        bst.subtree_insert(i, lst[i])
+    return bst
+
+def create_lsts():
+    lst_of_bsts = []
+    for i in range(16):
+        lst = create_rand_lst(20)
+        lst_of_bsts.append(insert_into_tree(lst))
+    return lst_of_bsts
+
+def main():
+    sizes_lst = []
+    heights_lst = []
+    lst_of_bsts = create_lsts()
+    for i in range(len(lst_of_bsts)):
+        sizes_lst.append(lst_of_bsts[i].size)
+        heights_lst.append(sub_tree_height(lst_of_bsts[i], lst_of_bsts[i].root))
+    create_csv()    
+
+main()
