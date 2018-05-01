@@ -27,7 +27,7 @@ class ChainingHashTableMap:
     def __setitem__(self, key, value):
         i = self.hash_function(key)
         if self.table[i] is None:
-            self.table[i] = UnsortedArrayMap.UnsortedArrayMap()
+            self.table[i] = UnsortedArrayMap()
         old_size = len(self.table[i])
         self.table[i][key] = value
         new_size = len(self.table[i])

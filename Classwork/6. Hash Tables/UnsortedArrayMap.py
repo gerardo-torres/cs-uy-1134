@@ -7,7 +7,7 @@ class UnsortedArrayMap:
 
 
     def __init__(self):
-        self.table = [] 
+        self.table = []
 
     def __len__(self):
         return len(self.table)
