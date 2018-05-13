@@ -80,4 +80,24 @@ class ArrayMinHeap:
         if self.data[smaller_child] < self.data[i]:
             self.swap(smaller_child, i)
             self.fix_down(smaller_child)
+
+def find_less_than_or_equal_to(self, k):
+    if self.is_empty():
+        raise Exception("heap is empty!")
+    if self.data[1].priority > k:
+        return []
+    else:
+        new_lst = []
+        for val in helper_find(self,new_lst.append(val), self.data[1], 1):
+            return new_lst
     
+
+def helper_find(heap, k, item, j):
+    if j >= len(self.data):
+        return
+    if item.priority > k:
+        return
+    yield(item.priority)
+    if heap.left(j) < len(heap.data):
+        yield from helper_find
+
