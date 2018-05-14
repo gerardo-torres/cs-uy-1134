@@ -107,6 +107,16 @@ def level_list(root, level):
         lst = left + right
     return lst
 
+def level_list2(root, level):
+    if root is None:
+        return []
+    else:
+        left = level_list2(root.left, level - 1)
+        right = level_list2(root.right, level - 1)
+        if level == 0:
+            return [root.data]
+    return left + right
+
 
 lbt = main()
 print(level_list(lbt.root, 2))

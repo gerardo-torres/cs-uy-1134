@@ -73,9 +73,9 @@ class ArrayMinHeap:
         if self.has_left(i):
             left = self.left(i)
             smaller_child = left
-        if self.has_left(i):
+        if self.has_right(i):
             right = self.right(i)
-            if self.data[left] < self.data[right]:
+            if self.data[left] > self.data[right]:
                 smaller_child = right
         if self.data[smaller_child] < self.data[i]:
             self.swap(smaller_child, i)

@@ -81,16 +81,32 @@ class LinkedBinaryTree:
     def subtree_children_dist(self, curr_root):
         if curr_root is None:
             return [0, 0, 0]
-        left = self.subtree_children_dist(self, curr_root.left)
-        right = self.subtree_children_dist(self,curr_root.right)
-        new_list = [left[o] + right[i] for i in range(3)]
+        left = self.subtree_children_dist(curr_root.left)
+        right = self.subtree_children_dist(curr_root.right)
+        print('left: ', left)
+        new_list = [left[0] + right[0], left[1] + right[1], left[2] + right[2]]
         if curr_root.left is not None and curr_root.right is not None:
             new_list[2] += 1
         elif curr_root.left is None and curr_root.right is None:
-            lst[0] += 1
-            lst[1] += 1
+            new_list[0] += 1
+        else:
+            new_list[1] += 1
+        return new_list
 
 
     def __iter__(self):
         for node in self.postorder():
             yield node.data
+
+def main():
+    node1 = LinkedBinaryTree.Node(1)
+    node3 = LinkedBinaryTree.Node(3)
+    node2 = LinkedBinaryTree.Node(2, node1, node3)
+    node6 = LinkedBinaryTree.Node(6)
+    node9 = LinkedBinaryTree.Node(9)
+    node7 = LinkedBinaryTree.Node(7, node6, node9)
+    root = LinkedBinaryTree.Node(4, node2, node7)
+    bin_tree = LinkedBinaryTree(root)
+    return bin_tree.subtree_children_dist(root)
+
+print(main())
