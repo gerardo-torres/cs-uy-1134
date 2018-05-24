@@ -204,15 +204,16 @@ class PlayList:
     def add_song_after(self, song_name, new_song_name):
         song_node = DoublyLinkedList().Node(new_song_name)
         prev = self.nodes[song_name]
-        self.data.add_after(prev, new_song_name)
-        self.nodes[new_song_name] = self.data.prev.next        
+        self.data.add_after(prev, song_node)
+        self.nodes[new_song_name] = prev.next        
     
     def play_song(self, song_name):
-        # play(song_name)
+        self.hash_table[song] # raises error if not found
+        play(song)
     
     def play_list(self):
         for i in self.data:
-            print(i)
+            play(i.data)
             
 def main():
     pl = PlayList()
@@ -220,6 +221,7 @@ def main():
     pl.add_song("two")
     pl.add_song("four")
     pl.play_list()
+    print("--------")
     pl.add_song_after("two", "three")
     pl.play_list()
 
